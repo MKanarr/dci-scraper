@@ -14,19 +14,20 @@ def SubCaptions(rawScores, soup):
     for line in soup.find_all('div', class_='column-total'):
         for total_score in line.find_all('div', class_='line'):
             if total_score.div.span is not None:
-                rawScores.append(total_score.div.span.text)
+                if total_score.div.span.text != '---':
+                    rawScores.append(float(total_score.div.span.text))
 
     return rawScores
 
 def CreateCSV(filename, corpsList, generalEffect, visual, music, finalTotal):
-    fields = ['Corps', 'General Effect', 'Visual', 'Music', 'Total']
+    fields = ['corps', 'general_effect', 'visual', 'music', 'total']
     rows = []
 
     for i in range(len(corpsList)):
         row_data = [corpsList[i], generalEffect[i], visual[i], music[i], finalTotal[i]]
         rows.append(row_data) 
 
-    with open(filename, 'w') as csvfile:
+    with open(filename, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(fields)
         csvwriter.writerows(rows)
@@ -72,12 +73,11 @@ def Finals2018():
     # subcaption scores
     rawScores = SubCaptions(rawScores, soup)
 
-
-    subTotal = rawScores[4::6]
-    finalTotal = rawScores[5::6]
-    generalEffect = rawScores[0::6]
-    visual = rawScores[1::6]
-    music = rawScores[2::6]
+    subTotal = rawScores[3::5]
+    finalTotal = rawScores[4::5]
+    generalEffect = rawScores[0::5]
+    visual = rawScores[1::5]
+    music = rawScores[2::5]
 
     corpsList.reverse()
     subTotal.reverse()
