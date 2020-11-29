@@ -11,11 +11,10 @@ def Corps(corpsList, soup):
     return corpsList
 
 def SubCaptions(rawScores, soup):
-    for div in soup.find_all('div', class_='data-table'):
-        for line in div.find_all('div', class_='column-total'):
-            for total_score in line.find_all('div', class_='line'):
-                if total_score.div.span is not None:
-                    rawScores.append(total_score.div.span.text)
+    for line in soup.find_all('div', class_='column-total'):
+        for total_score in line.find_all('div', class_='line'):
+            if total_score.div.span is not None:
+                rawScores.append(total_score.div.span.text)
 
     return rawScores
 
@@ -38,11 +37,6 @@ def Finals2019():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -71,11 +65,6 @@ def Finals2018():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -105,11 +94,6 @@ def Finals2017():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -138,11 +122,6 @@ def Finals2016():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -171,11 +150,6 @@ def Finals2015():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -204,11 +178,6 @@ def Finals2014():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
@@ -237,11 +206,6 @@ def Finals2013():
 
     corpsList = []
     rawScores = []
-    subTotal = []
-    finalTotal = []
-    generalEffect = []
-    visual = []
-    music = []
 
     # corps names
     corpsList = Corps(corpsList, soup)
